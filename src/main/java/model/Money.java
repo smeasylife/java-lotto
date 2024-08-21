@@ -19,7 +19,7 @@ public class Money {
     private int validateMoney(String strMoney) {
         int money = Integer.parseInt(strMoney);
         if (! (money % 10000 == 0)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
         return money;
     }

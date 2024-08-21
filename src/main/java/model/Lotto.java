@@ -1,13 +1,17 @@
 package model;
 
+import view.OutputView;
+
 import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
+    OutputView outputView = new OutputView();
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
+        outputView.printLottoNumber(numbers);
     }
 
     private void validate(List<Integer> numbers) {
