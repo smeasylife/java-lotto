@@ -10,9 +10,18 @@ import java.util.List;
 
 public class WinningNumber {
     InputView inputView = new InputView();
-    private List<Object> winningNumbers = new ArrayList<>();
+    private List<Integer> winningNumbers = new ArrayList<>();
+    int count;
 
-    public void getWinningNumbers() {
+    public void plusCount() {
+        count++;
+    }
+
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
+    }
+
+    public void inputWinningNumbers() {
         inputView.printGetWinningMessage();
         String stringWinningNumber = Console.readLine();
         generateWinningNumbers(stringWinningNumber);
@@ -35,7 +44,7 @@ public class WinningNumber {
     private void isCorrectChar(String stringWinningNumber) {
         char[] characters = stringWinningNumber.toCharArray();
         for (char character : characters) {
-            if (!Character.isDigit(character) || character != ',') {
+            if (!Character.isDigit(character) && character != ',') {
                 throw new IllegalArgumentException("[ERROR] 당첨 번호가 잘못 입력되었습니다");
             }
         }

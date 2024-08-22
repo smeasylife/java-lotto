@@ -8,6 +8,10 @@ public class Lotto {
     private final List<Integer> numbers;
     OutputView outputView = new OutputView();
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;

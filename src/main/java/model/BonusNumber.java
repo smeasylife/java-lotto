@@ -3,20 +3,33 @@ package model;
 import camp.nextstep.edu.missionutils.Console;
 import view.InputView;
 
+import java.util.List;
+
 public class BonusNumber {
     InputView inputView = new InputView();
     private int bonusNumber;
 
-    public void inputBonusNumber() {
+    public void inputBonusNumber(List<Integer> winningNumbers) {
         inputView.printGetBonusNumberMessage();
         String stringBonusNumber = Console.readLine();
-        validate(stringBonusNumber);
+        validate(stringBonusNumber, winningNumbers);
         bonusNumber = Integer.parseInt(stringBonusNumber);
     }
 
-    private void validate(String stringBonusNumber) {
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
+
+    private void validate(String stringBonusNumber,List<Integer> winningNumbers) {
         validateIsInteger(stringBonusNumber);
         validateNumberBound(stringBonusNumber);
+        validateDuplicate(stringBonusNumber, winningNumbers);
+    }
+
+    private void validateDuplicate(String stringBonusNumber, List<Integer> winningNumbers) {
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException("\"[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
     }
 
     private void validateIsInteger(String stringBonusNumber) {
