@@ -12,7 +12,7 @@ public class WinningNumber {
     InputView inputView = new InputView();
     private List<Object> winningNumbers = new ArrayList<>();
 
-    public void getNumberList() {
+    public void getWinningNumbers() {
         inputView.printGetWinningMessage();
         String stringWinningNumber = Console.readLine();
         generateWinningNumbers(stringWinningNumber);

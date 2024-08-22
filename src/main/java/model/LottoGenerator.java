@@ -5,17 +5,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LottoNumberGenerator {
-    private List<Lotto> lottoList = new ArrayList<>();
+public class LottoGenerator {
 
-    public void generateLottoNumber(int money) {
-        int quantity = money / 1000;
-        for (int i = 0; i < quantity; i++) {
-            lottoList.add(new Lotto(generateLottoList()));
-        }
+    public Lotto generateLottoNumber() {
+        return new Lotto(generateLottoNumberList());
     }
 
-    public List<Integer> generateLottoList() {
+    private List<Integer> generateLottoNumberList() {
         List<Integer> integerList = new ArrayList<>();
         integerList.add(Randoms.pickNumberInRange(1,45));
         while (integerList.size() < 6) {

@@ -7,20 +7,34 @@ public class Money {
     private int money;
     InputView inputView = new InputView();
 
-    public Money(int money) {
-        this.money = money;
-    }
-
     public void inputMoney() {
         inputView.printBuyLottoMessage();
-        this.money = validateMoney(Console.readLine());
+        this.money = validate(Console.readLine());
     }
 
-    private int validateMoney(String strMoney) {
+    public int getMoney() {
+        return money;
+    }
+    
+    private int validate(String strMoney) {
+        validateCorrectMoney(strMoney);
+        validateIsInteger(strMoney);
+        return Integer.parseInt(strMoney);
+    }
+
+    private void validateCorrectMoney(String strMoney) {
         int money = Integer.parseInt(strMoney);
-        if (! (money % 10000 == 0)) {
+        if (! (money % 1000 == 0)) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
-        return money;
+    }
+    
+    private void validateIsInteger(String strMoney) {
+        char[] charMoney = strMoney.toCharArray();
+        for (char ch : charMoney) {
+            if (!(Character.isDigit(ch))) {
+                throw new IllegalArgumentException("\"[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            }
+        }
     }
 }
